@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="Foreground" value="0x80">
+	<param name="Window Styles" value="0x800025">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Classes">
+		</OBJECT>
+<UL>
+<% @classes.sort.each do |klass| %>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="<%= klass.full_name %>">
+		<param name="Local" value="<%= klass.path %>">
+		</OBJECT>
+<% unless klass.method_list.empty? %>
+<UL>
+<% klass.method_list.sort.each do |method| %>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="<%= method.name %>">
+		<param name="Local" value="<%= method.path %>">
+		</OBJECT>
+    </LI>
+<% end # klass.method_list %>
+</UL>
+<% end # unless %>
+
+</LI>
+  <% end # @classes.each %>
+</UL>
+</UL>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+  <param name="Name" value="Files">
+		</OBJECT>
+<UL>
+<% @files.sort.each do |klass| %>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="<%= klass.full_name %>">
+		<param name="Local" value="<%= klass.path %>">
+		</OBJECT>
+</LI>
+  <% end # @classes.each %>
+</UL>
+</BODY></HTML>

@@ -1,0 +1,16 @@
+[OPTIONS]
+Auto Index=Yes
+Compatibility=1.1 or later
+Compiled file=<%= @values[:opname] %>.chm
+Contents file=contents.hhc
+Default topic=index.html
+Full-text search=Yes
+Index file=index.hhk
+Language=0x409 English(United States)
+Title=<%= @values[:title] %>
+
+[FILES]
+<% @values[:html_files].each do |html_file| %>
+<%= html_file %>
+
+<% end %>

@@ -1,0 +1,2 @@
+require 'rdoc/generator/chm'
+
