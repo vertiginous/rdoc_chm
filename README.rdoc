@@ -1,11 +1,5 @@
 = \RDoc_CHM
 
-:stopdoc:
-* {RDoc Project Page}[http://rubyforge.org/projects/rdoc/]
-* {RDoc Documentation}[http://rdoc.rubyforge.org/rdoc_chm]
-* {RDoc Bug Tracker}[http://rubyforge.org/tracker/?atid=2472&group_id=627&func=browse]
-:startdoc:
-
 == DESCRIPTION:
 
 A Microsoft Compiled HTML Help generator for RDoc.
