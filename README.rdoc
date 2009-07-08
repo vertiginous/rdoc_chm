@@ -6,11 +6,10 @@
 
 == DESCRIPTION:
 
-An unmaintained Microsoft Compiled HTML Help generator for RDoc.
+A Microsoft Compiled HTML Help generator for RDoc.
 
 == FEATURES/PROBLEMS:
 
-* Unmaintained, only known to work with RDoc 2.3.0
 
 == SYNOPSIS:
 
@@ -21,9 +20,10 @@ An unmaintained Microsoft Compiled HTML Help generator for RDoc.
 
 == REQUIREMENTS:
 
-* RDoc 2.3 (probably works with newer RDoc 2.x versions)
-* Requires installation of Microsoft's HTML Help Workshop
-
+* RDoc 2.4
+* Requires installation of Microsoft's HTML Help Workshop 
+    You can download a copy for free from:
+      http://msdn.microsoft.com/library/default.asp?url=/library/en-us/htmlhelp/html/hwMicrosoftHTMLHelpDownloads.asp
 == INSTALL:
 
 * sudo gem install rdoc_chm
