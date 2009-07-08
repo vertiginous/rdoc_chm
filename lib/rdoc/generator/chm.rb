@@ -1,4 +1,4 @@
-gem 'rdoc', '~> 2.4'
+gem 'rdoc', '>= 2.4'
 require 'rdoc/generator/darkfish'
 
 class RDoc::AnyMethod
