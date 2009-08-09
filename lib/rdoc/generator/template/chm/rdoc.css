@@ -430,12 +430,14 @@ div.method-source-code {
 }
 
 div.method-source-code pre {
-	background: inherit;
+	background: #262626;
 	padding: 0;
 	color: white;
 	overflow: hidden;
 }
-
+IMG.hidden {
+  display: none;
+}
 /* @group Ruby keyword styles */
 
 .standalone-code { background: #221111; color: #ffdead; overflow: hidden; }

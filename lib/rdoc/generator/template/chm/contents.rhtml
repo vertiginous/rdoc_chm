@@ -12,7 +12,8 @@
   </OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap">
-          <param name="Name" value="Classes">
+          <param name="Name" value="Classes/Modules">
+          <param name="Local" value="classindex.html">
         </OBJECT>
     <UL>
     <% @classes.sort.each do |klass| %>
@@ -24,7 +25,7 @@
       <UL>
       <% klass.method_list.sort.each do |method| %>
         <LI> <OBJECT type="text/sitemap">
-               <param name="Name" value="<%= method.name %>">
+               <param name="Name" value="<%= method.pretty_name %>">
                <param name="Local" value="<%= method.path %>">
             </OBJECT>
           </LI>
@@ -37,6 +38,7 @@
   <UL>
     <LI><OBJECT type="text/sitemap">
           <param name="Name" value="Files">
+          <param name="Local" value="fileindex.html">
         </OBJECT>
     <UL>
         <% @files.sort.each do |klass| %>

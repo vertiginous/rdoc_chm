@@ -53,10 +53,28 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
 
   def generate_help_project
     debug_msg "Generating the help project files"
+    generate_file_index
+    generate_class_index
     generate_project_file
     generate_contents
     generate_chm_index
     compile_project
+  end
+
+  def generate_file_index
+    templatefile = @template_dir + 'fileindex.rhtml'
+
+    outfile = @outputdir + "fileindex.html"
+    debug_msg "  rendering #{outfile}"
+    self.render_template( templatefile, binding(), outfile )
+  end
+
+  def generate_class_index
+    templatefile = @template_dir + 'classindex.rhtml'
+
+    outfile = @outputdir + "classindex.html"
+    debug_msg "  rendering #{outfile}"
+    self.render_template( templatefile, binding(), outfile )
   end
 
   ##
@@ -67,9 +85,9 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
 
     @values = { :title => @options.title, :opname => @outputdir.basename }
     
-    @values[:html_files] = (@files+@classes).map{|f| f.path }
-    @values[:html_files].unshift('index.html')
-
+    static_files = ['index.html', 'classindex.html', 'fileindex.html']
+    @values[:html_files] = static_files + (@files+@classes).map{|f| f.path }
+    
     outfile = @outputdir + @project_name
     debug_msg "  rendering #{outfile}"
     self.render_template( templatefile, binding(), outfile )

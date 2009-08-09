@@ -26,4 +26,16 @@ Hoe.new 'rdoc_chm', RDoc::Generator::CHM::VERSION do |rdoc_chm|
   rdoc_chm.spec_extras['homepage'] = 'http://rdoc.rubyforge.org/rdoc_chm'
 end
 
+desc "Build chm files"
+task :chm => :clean do
+  sh %q{ rdoc --fmt chm --op rdoc_chm --title="rdoc_chm 2.4.0" --main=README.rdoc . }
+end
+
+task :clobber_chm do
+  rm_rf "rdoc_chm"
+end
+
+desc "rebuild chm files"
+task :rechm => [:clobber_chm, :chm] 
+
 # vim: syntax=Ruby
