@@ -38,4 +38,4 @@ lib/rdoc/generator/template/chm/js/jquery.js
 lib/rdoc/generator/template/chm/js/quicksearch.js
 lib/rdoc/generator/template/chm/js/thickbox-compressed.js
 lib/rdoc/generator/template/chm/rdoc.css
-test/test_rdoc_chm.rb
+

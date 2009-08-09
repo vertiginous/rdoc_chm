@@ -20,7 +20,12 @@
 </head>
 <body class="<%= klass.type %>">
 
-	<div id="metadata">
+	<div id="documentation">
+
+		<h1 class="<%= klass.type %>"><%= klass.full_name %></h1>
+
+
+	<!--<div id="metadata"> -->
 		<div id="file-metadata">
 			<div id="file-list-section" class="section">
 				<h3 class="section-header">In Files</h3>
@@ -40,7 +45,7 @@
 			<% if klass.type == 'class' %>
 			<div id="parent-class-section" class="section">
 				<h3 class="section-header">Parent</h3>
-				<% unless String === klass.superclass %>
+				<% unless String === klass.superclass or klass.superclass.nil? %>
 				<p class="link"><a href="<%= klass.aref_to klass.superclass.path %>"><%= klass.superclass.full_name %></a></p>
 				<% else %>
 				<p class="link"><%= klass.superclass %></p>
@@ -70,10 +75,7 @@
 				alt="toggle debugging" height="16" width="16" /></div>
 			<% end %>
 		</div>
-	</div>
-
-	<div id="documentation">
-		<h1 class="<%= klass.type %>"><%= klass.full_name %></h1>
+	<!-- </div> -->
 
 		<div id="description">
 			<%= klass.description %>

@@ -34,7 +34,10 @@
 </body>
 <% else %>
 <body class="file file-popup">
-	<div id="metadata">
+
+	<div id="documentation">
+
+	<!-- <div id="metadata"> -->
 		<dl>
 			<dt class="modified-date">Last Modified</dt>
 			<dd class="modified-date"><%= file.last_modified %></dd>
@@ -56,9 +59,8 @@
 				href="<%= file.cvs_url %>"><%= file.cvs_url %></a></dd>
 			<% end %>
 		</dl>
-	</div>
+	<!-- </div> -->
 
-	<div id="documentation">
 		<% if file.comment %>
 		<div class="description">
 			<h2>Description</h2>
