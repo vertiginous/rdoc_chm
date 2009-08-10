@@ -16,9 +16,8 @@
   * udpated TOC from "Classes" to "Classes/Modules" 
   * TOC uses method.pretty_name instead of method.name 
   * added hidden img tags to index.rhtml so the html help compiler will find image files
-  
-* fixes to chm project and contents files
-* Readme corrections
+  * fixes to chm project and contents files
+  * Readme corrections
 
 === 2.3.0 / 2008-12-29
 
