@@ -1,9 +1,12 @@
 === 2.4.0 / 2009-08-09
 
-* 1 major enhancement
+* Two major enhancements
   * RDoc 2.4.x compatibility
     - Converted to RHTML templates
     - --opname option was removed form RDoc. RDoc_chm now uses --op for naming the CHM file
+  * Improved table of contents and index.
+    - TOC is now split into classes/modules and files
+    - index now lists methods followed by their class, i.e. 'to_s (Symbol)'
 
 * Multiple minor enhancements:
   * fixed issue when klass.superclass is nil 
