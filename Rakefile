@@ -7,7 +7,9 @@ $:.unshift 'lib'
 
 require 'rdoc/generator/chm'
 
-Hoe.new 'rdoc_chm', RDoc::Generator::CHM::VERSION do |rdoc_chm|
+Hoe.plugin :git
+
+Hoe.spec 'rdoc_chm' do |rdoc_chm|
   rdoc_chm.rubyforge_name = 'rdoc'
 
   rdoc_chm.developer 'Gordon Thiesfeld', 'gthiesfeld@gmail.com'
