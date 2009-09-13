@@ -45,19 +45,6 @@
 		<% end %>
 	</ul>
 
-  <!-- removing methods because method info is listed alphabetically in the CHM index, and by class in the 
-       table of contents
-
-	<h2>Methods</h2>
-	<ul>
-		<% RDoc::TopLevel.all_classes_and_modules.map do |mod|
-				 mod.method_list
-			 end.flatten.sort.each do |method| %>
-			<li><a href="<%= method.path %>"><%= method.pretty_name %> &mdash; <%= method.parent.full_name %></a></li>
-		<% end %>
-	</ul>
-  -->
-
 	<div id="validator-badges">
 		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
 		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
