@@ -1,6 +1,6 @@
 === 2.4.1 / 2009-09-13
 
-* Two minor enhancments
+* Two minor enhancements
   * remove methods from index page, they're listed in the CHM TOC
   * Loose regex stripping the beginning of method call sequence when the sequence contains an ellipsis
 
