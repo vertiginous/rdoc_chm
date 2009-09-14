@@ -1,9 +1,8 @@
 === 2.4.1 / 2009-09-13
 
-* Three minor enhancments
+* Two minor enhancments
   * remove methods from index page, they're listed in the CHM TOC
   * Loose regex stripping the beginning of method call sequence when the sequence contains an ellipsis
-  * checks for html help workshop *before* generating html and html help project files
 
 === 2.4.0 / 2009-08-10
 
