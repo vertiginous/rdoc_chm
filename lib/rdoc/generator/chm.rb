@@ -20,7 +20,7 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
 
   RDoc::RDoc.add_generator( self )
 
-  HHC_PATH = "c:/Program Files/HTML Help Workshop/hhc.exe"
+  HHC_PATH = "#{ENV['PROGRAMFILES']}/HTML Help Workshop/hhc.exe"
 
   def initialize(options)
     check_for_html_help_workshop
