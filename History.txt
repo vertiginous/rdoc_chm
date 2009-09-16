@@ -1,3 +1,9 @@
+=== 2.4.2 / 2009-09-16
+
+* One minor enhancement
+  * HHC_PATH shouldn't assume program files are in 'C:\Program Files'
+
+
 === 2.4.1 / 2009-09-13
 
 * Two minor enhancements
