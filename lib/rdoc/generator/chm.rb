@@ -66,7 +66,7 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
 
     outfile = @outputdir + "fileindex.html"
     debug_msg "  rendering #{outfile}"
-    self.render_template( templatefile, binding(), outfile )
+    render_template template_file, out_file do |io| binding end
   end
 
   def generate_class_index
@@ -74,7 +74,7 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
 
     outfile = @outputdir + "classindex.html"
     debug_msg "  rendering #{outfile}"
-    self.render_template( templatefile, binding(), outfile )
+    render_template template_file, out_file do |io| binding end
   end
 
   ##
@@ -90,7 +90,7 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
     
     outfile = @outputdir + @project_name
     debug_msg "  rendering #{outfile}"
-    self.render_template( templatefile, binding(), outfile )
+    render_template template_file, out_file do |io| binding end
   end
 
   ##
@@ -100,7 +100,7 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
 
     outfile = @outputdir + "contents.hhc"
     debug_msg "  rendering #{outfile}"
-    self.render_template( templatefile, binding(), outfile )
+    render_template template_file, out_file do |io| binding end
   end
 
   ##
@@ -110,7 +110,7 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
     
     outfile = @outputdir + "index.hhk"
     debug_msg "  rendering #{outfile}"
-    self.render_template( templatefile, binding(), outfile )
+    render_template template_file, out_file do |io| binding end
   end
 
   ##
