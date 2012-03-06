@@ -1,4 +1,5 @@
 gem 'rdoc', '>= 2.4'
+require 'rdoc/rdoc'
 require 'rdoc/generator/darkfish'
 
 class RDoc::AnyMethod
@@ -39,10 +40,11 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
       "url=/library/en-us/htmlhelp/html/hwMicrosoftHTMLHelpDownloads.asp\n\n"
   end
 
+
   ##
   # Generate the html as normal, then wrap it in a help project
 
-  def generate( top_levels )
+  def generate top_levels
     super
     @project_name = "#{@outputdir.basename}.hhp"
     generate_help_project
@@ -62,18 +64,18 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
   end
 
   def generate_file_index
-    templatefile = @template_dir + 'fileindex.rhtml'
+    template_file = @template_dir + 'fileindex.rhtml'
 
-    outfile = @outputdir + "fileindex.html"
-    debug_msg "  rendering #{outfile}"
+    out_file = @outputdir + "fileindex.html"
+    debug_msg "  rendering #{out_file}"
     render_template template_file, out_file do |io| binding end
   end
 
   def generate_class_index
-    templatefile = @template_dir + 'classindex.rhtml'
+    template_file = @template_dir + 'classindex.rhtml'
 
-    outfile = @outputdir + "classindex.html"
-    debug_msg "  rendering #{outfile}"
+    out_file = @outputdir + "classindex.html"
+    debug_msg "  rendering #{out_file}"
     render_template template_file, out_file do |io| binding end
   end
 
@@ -81,35 +83,35 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
   # The project file links together all the various
   # files that go to make up the help.
   def generate_project_file
-    templatefile = @template_dir + 'hpp_file.rhtml'
+    template_file = @template_dir + 'hpp_file.rhtml'
 
     @values = { :title => @options.title, :opname => @outputdir.basename }
     
     static_files = ['index.html', 'classindex.html', 'fileindex.html']
     @values[:html_files] = static_files + (@files+@classes).map{|f| f.path }
     
-    outfile = @outputdir + @project_name
-    debug_msg "  rendering #{outfile}"
+    out_file = @outputdir + @project_name
+    debug_msg "  rendering #{out_file}"
     render_template template_file, out_file do |io| binding end
   end
 
   ##
   # generate the CHM contents (contents.hhc)
   def generate_contents
-    templatefile = @template_dir + 'contents.rhtml'
+    template_file = @template_dir + 'contents.rhtml'
 
-    outfile = @outputdir + "contents.hhc"
-    debug_msg "  rendering #{outfile}"
+    out_file = @outputdir + "contents.hhc"
+    debug_msg "  rendering #{out_file}"
     render_template template_file, out_file do |io| binding end
   end
 
   ##
   # generate the CHM index (index.hhk)
   def generate_chm_index
-    templatefile = @template_dir + 'chm_index.rhtml'
+    template_file = @template_dir + 'chm_index.rhtml'
     
-    outfile = @outputdir + "index.hhk"
-    debug_msg "  rendering #{outfile}"
+    out_file = @outputdir + "index.hhk"
+    debug_msg "  rendering #{out_file}"
     render_template template_file, out_file do |io| binding end
   end
 
@@ -120,5 +122,10 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
     system(HHC_PATH, @project_name)
   end
 
+  def assemble_template body_file
+    body = body_file.read
+    return body if body
+  end
+  
 end
 
