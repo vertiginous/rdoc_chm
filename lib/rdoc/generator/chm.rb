@@ -17,7 +17,7 @@ end
 
 class RDoc::Generator::CHM < RDoc::Generator::Darkfish
 
-  VERSION = '2.4.2'
+  VERSION = '2.4.3'
 
   RDoc::RDoc.add_generator( self )
 
