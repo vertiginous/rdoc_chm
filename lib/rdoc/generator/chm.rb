@@ -1,4 +1,4 @@
-gem 'rdoc', '>= 2.4'
+gem 'rdoc', '>= 3.12'
 require 'rdoc/rdoc'
 require 'rdoc/generator/darkfish'
 
