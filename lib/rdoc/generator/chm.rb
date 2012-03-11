@@ -122,10 +122,16 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
     system(HHC_PATH, @project_name)
   end
 
+  ##
+  # This is an override to make sure that the new Darkfish template
+  # doesn't try to parse the CHM files as html partials
+  #
+  # TODO: If you want to refactor the html used in the template
+  # this should probably be a regex or something that checks to see
+  # if the file extension is html.
   def assemble_template body_file
     body = body_file.read
     return body if body
   end
-  
 end
 
