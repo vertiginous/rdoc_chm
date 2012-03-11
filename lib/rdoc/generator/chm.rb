@@ -19,6 +19,8 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
 
   VERSION = '2.4.3'
 
+  DESCRIPTION = 'Microsoft Compiled HTML Help (chm) generator'
+
   RDoc::RDoc.add_generator( self )
 
   HHC_PATH = "#{ENV['PROGRAMFILES']}/HTML Help Workshop/hhc.exe"
