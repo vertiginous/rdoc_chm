@@ -7,10 +7,10 @@ lib/rdoc/generator/chm.rb
 lib/rdoc/generator/template/chm/.document
 lib/rdoc/generator/template/chm/chm_index.rhtml
 lib/rdoc/generator/template/chm/classindex.rhtml
-lib/rdoc/generator/template/chm/class.rhtml
+lib/rdoc/generator/template/chm/classpage.rhtml
 lib/rdoc/generator/template/chm/contents.rhtml
 lib/rdoc/generator/template/chm/fileindex.rhtml
-lib/rdoc/generator/template/chm/page.rhtml
+lib/rdoc/generator/template/chm/filepage.rhtml
 lib/rdoc/generator/template/chm/hpp_file.rhtml
 lib/rdoc/generator/template/chm/images/brick.png
 lib/rdoc/generator/template/chm/images/brick_link.png
