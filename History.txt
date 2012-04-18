@@ -1,14 +1,13 @@
 === 2.4.3 / Unreleased
 
 * Updated to for RDoc 3.12 Capatibility
-  * Changed classpage.rhtml to class.rhtml
-  * Changed filepage.rhtml to file.rhtml
   * Updated discover.rb
   * Updated chm.rb
     * render_template uses a new syntax
     * variable outfile to out_file
-    * variable templatefile to template_fil
+    * variable templatefile to template_file
     * added method override "assemble_template" to perserve functionality
+    * added method override "generate_file_files" for work around to Rdoc bug #107
     * updated RDoc version requirements
     * added DESCRIPTION
 * Removed Debug dumps from templates (RDoc 3.12 didn't understand them)
