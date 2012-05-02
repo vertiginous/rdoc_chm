@@ -1,4 +1,4 @@
-gem 'rdoc', '>= 2.4'
+require 'rdoc/rdoc'
 require 'rdoc/generator/darkfish'
 
 class RDoc::AnyMethod
@@ -16,7 +16,9 @@ end
 
 class RDoc::Generator::CHM < RDoc::Generator::Darkfish
 
-  VERSION = '2.4.2'
+  VERSION = '2.4.3'
+
+  DESCRIPTION = 'Microsoft Compiled HTML Help (chm) generator'
 
   RDoc::RDoc.add_generator( self )
 
@@ -39,10 +41,11 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
       "url=/library/en-us/htmlhelp/html/hwMicrosoftHTMLHelpDownloads.asp\n\n"
   end
 
+
   ##
   # Generate the html as normal, then wrap it in a help project
 
-  def generate( top_levels )
+  def generate top_levels
     super
     @project_name = "#{@outputdir.basename}.hhp"
     generate_help_project
@@ -62,55 +65,55 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
   end
 
   def generate_file_index
-    templatefile = @template_dir + 'fileindex.rhtml'
+    template_file = @template_dir + 'fileindex.rhtml'
 
-    outfile = @outputdir + "fileindex.html"
-    debug_msg "  rendering #{outfile}"
-    self.render_template( templatefile, binding(), outfile )
+    out_file = @outputdir + "fileindex.html"
+    debug_msg "  rendering #{out_file}"
+    render_template template_file, out_file do |io| binding end
   end
 
   def generate_class_index
-    templatefile = @template_dir + 'classindex.rhtml'
+    template_file = @template_dir + 'classindex.rhtml'
 
-    outfile = @outputdir + "classindex.html"
-    debug_msg "  rendering #{outfile}"
-    self.render_template( templatefile, binding(), outfile )
+    out_file = @outputdir + "classindex.html"
+    debug_msg "  rendering #{out_file}"
+    render_template template_file, out_file do |io| binding end
   end
 
   ##
   # The project file links together all the various
   # files that go to make up the help.
   def generate_project_file
-    templatefile = @template_dir + 'hpp_file.rhtml'
+    template_file = @template_dir + 'hpp_file.rhtml'
 
     @values = { :title => @options.title, :opname => @outputdir.basename }
     
     static_files = ['index.html', 'classindex.html', 'fileindex.html']
     @values[:html_files] = static_files + (@files+@classes).map{|f| f.path }
     
-    outfile = @outputdir + @project_name
-    debug_msg "  rendering #{outfile}"
-    self.render_template( templatefile, binding(), outfile )
+    out_file = @outputdir + @project_name
+    debug_msg "  rendering #{out_file}"
+    render_template template_file, out_file do |io| binding end
   end
 
   ##
   # generate the CHM contents (contents.hhc)
   def generate_contents
-    templatefile = @template_dir + 'contents.rhtml'
+    template_file = @template_dir + 'contents.rhtml'
 
-    outfile = @outputdir + "contents.hhc"
-    debug_msg "  rendering #{outfile}"
-    self.render_template( templatefile, binding(), outfile )
+    out_file = @outputdir + "contents.hhc"
+    debug_msg "  rendering #{out_file}"
+    render_template template_file, out_file do |io| binding end
   end
 
   ##
   # generate the CHM index (index.hhk)
   def generate_chm_index
-    templatefile = @template_dir + 'chm_index.rhtml'
+    template_file = @template_dir + 'chm_index.rhtml'
     
-    outfile = @outputdir + "index.hhk"
-    debug_msg "  rendering #{outfile}"
-    self.render_template( templatefile, binding(), outfile )
+    out_file = @outputdir + "index.hhk"
+    debug_msg "  rendering #{out_file}"
+    render_template template_file, out_file do |io| binding end
   end
 
   ##
@@ -120,5 +123,50 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
     system(HHC_PATH, @project_name)
   end
 
+  ##
+  # This is an override to make sure that the new Darkfish template
+  # doesn't try to parse the CHM files as html partials
+  #
+  # TODO: If you want to refactor the html used in the template
+  # this should probably be a regex or something that checks to see
+  # if the file extension is html.
+  def assemble_template body_file
+    body = body_file.read
+    return body if body
+  end
+
+  ##
+  # The generate_file_files method in RDoc 3.12 is broken for 'legacy'
+  # template support. So this overrides that method so it works.
+  def generate_file_files
+    filepage_file = @template_dir + 'filepage.rhtml' 
+
+    return unless filepage_file.exist?
+
+    debug_msg "Generating file documentation in #{@outputdir}"
+
+    out_file = nil
+    current = nil
+
+    @files.each do |file|
+      current = file
+      template_file = nil
+      out_file = @outputdir + file.path
+      debug_msg "  working on %s (%s)" % [file.full_name, out_file]
+      # suppress 1.9.3 warning
+      rel_prefix = rel_prefix = @outputdir.relative_path_from(out_file.dirname)
+
+      @title += " - #{@options.title}"
+      template_file = filepage_file
+
+      render_template template_file, out_file do |io| binding end
+    end
+  rescue => e
+    error =
+      RDoc::Error.new "error generating #{out_file}: #{e.message} (#{e.class})"
+    error.set_backtrace e.backtrace
+
+    raise error
+  end
 end
 

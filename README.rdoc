@@ -24,7 +24,7 @@ Or at the command line:
 == REQUIREMENTS:
 
 * A Windows OS
-* RDoc 2.4
+* RDoc 3.12
 * Requires installation of Microsoft's HTML Help Workshop 
     You can download a copy for free from:
       http://msdn.microsoft.com/library/default.asp?url=/library/en-us/htmlhelp/html/hwMicrosoftHTMLHelpDownloads.asp
