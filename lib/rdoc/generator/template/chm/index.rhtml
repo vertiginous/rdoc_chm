@@ -17,7 +17,6 @@
 </head>
 <body class="indexpage">
 
-	<% $stderr.sync = true %>
 	<h1><%= h @options.title %></h1>
 
 	<% if @options.main_page && main_page = @files.find { |f| f.full_name == @options.main_page } %>

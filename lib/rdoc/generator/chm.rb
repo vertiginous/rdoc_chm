@@ -30,15 +30,15 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
   end
 
   def check_for_html_help_workshop
-    stat = File.stat(HHC_PATH)
-  rescue
-    $stderr <<
-      "\n.chm output generation requires that Microsoft's Html Help\n" <<
-      "Workshop is installed. RDoc looks for it in:\n\n    " <<
-      HHC_PATH <<
-      "\n\nYou can download a copy for free from:\n\n" <<
-      "    http://msdn.microsoft.com/library/default.asp?" <<
-      "url=/library/en-us/htmlhelp/html/hwMicrosoftHTMLHelpDownloads.asp\n\n"
+    unless File.exists?(HHC_PATH)
+      warn <<
+        "\n.chm output generation requires that Microsoft's Html Help\n" <<
+        "Workshop is installed. RDoc looks for it in:\n\n    " <<
+        HHC_PATH <<
+        "\n\nYou can download a copy for free from:\n\n" <<
+        "    http://msdn.microsoft.com/library/default.asp?" <<
+        "url=/library/en-us/htmlhelp/html/hwMicrosoftHTMLHelpDownloads.asp\n\n"
+    end
   end
 
 
