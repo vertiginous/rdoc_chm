@@ -1,4 +1,4 @@
-=== 3.0.0 / Unreleased
+=== 3.0.0 / 2012-05-11
 
 * Updated to for RDoc 3.12 Capatibility
   * Updated discover.rb
