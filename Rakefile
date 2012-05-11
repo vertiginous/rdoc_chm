@@ -21,9 +21,8 @@ Hoe.spec 'rdoc_chm' do |rdoc_chm|
 
   rdoc_chm.testlib = :minitest
 
-  rdoc_chm.extra_dev_deps << ['minitest', '~> 1.3']
   rdoc_chm.spec_extras['required_rubygems_version'] = '>= 1.3'
-  rdoc_chm.spec_extras['homepage'] = 'http://rdoc.rubyforge.org/rdoc_chm'
+  rdoc_chm.spec_extras['homepage'] = 'https://github.com/vertiginous/rdoc_chm'
 end
 
 desc "Build chm files"
