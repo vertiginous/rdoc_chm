@@ -5,8 +5,6 @@ require 'hoe'
 
 $:.unshift 'lib'
 
-require 'rdoc/generator/chm'
-
 Hoe.plugin :git
 
 Hoe.spec 'rdoc_chm' do |rdoc_chm|
@@ -19,7 +17,7 @@ Hoe.spec 'rdoc_chm' do |rdoc_chm|
 
   rdoc_chm.readme_file = 'README.rdoc'
 
-  rdoc_chm.extra_deps << ['rdoc', '>= 2.4']
+  rdoc_chm.extra_deps << ['rdoc', '~> 3.12']
 
   rdoc_chm.testlib = :minitest
 
