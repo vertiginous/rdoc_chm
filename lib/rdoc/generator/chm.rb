@@ -84,7 +84,7 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
   # The project file links together all the various
   # files that go to make up the help.
   def generate_project_file
-    template_file = @template_dir + 'hpp_file.rhtml'
+    template_file = @template_dir + 'hhp_file.hhp.rhtml'
 
     @values = { :title => @options.title, :opname => @outputdir.basename }
     
@@ -99,7 +99,7 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
   ##
   # generate the CHM contents (contents.hhc)
   def generate_contents
-    template_file = @template_dir + 'contents.rhtml'
+    template_file = @template_dir + 'contents.hhc.rhtml'
 
     out_file = @outputdir + "contents.hhc"
     debug_msg "  rendering #{out_file}"
@@ -109,7 +109,7 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
   ##
   # generate the CHM index (index.hhk)
   def generate_chm_index
-    template_file = @template_dir + 'chm_index.rhtml'
+    template_file = @template_dir + 'chm_index.hhk.rhtml'
     
     out_file = @outputdir + "index.hhk"
     debug_msg "  rendering #{out_file}"
@@ -126,13 +126,13 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
   ##
   # This is an override to make sure that the new Darkfish template
   # doesn't try to parse the CHM files as html partials
-  #
-  # TODO: If you want to refactor the html used in the template
-  # this should probably be a regex or something that checks to see
-  # if the file extension is html.
   def assemble_template body_file
-    body = body_file.read
-    return body if body
+    if body_file.basename.to_s =~ /\.hh(k|c|p)/
+      body = body_file.read
+      return body if body
+    else
+      super
+    end
   end
 
   ##
