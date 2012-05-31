@@ -5,9 +5,12 @@ Rakefile
 lib/rdoc/discover.rb
 lib/rdoc/generator/chm.rb
 lib/rdoc/generator/template/chm/.document
+lib/rdoc/generator/template/chm/_class_metadata.rhtml
+lib/rdoc/generator/template/chm/_head.rhtml
+lib/rdoc/generator/template/chm/_footer.rhtml
 lib/rdoc/generator/template/chm/chm_index.hhk.rhtml
 lib/rdoc/generator/template/chm/classindex.rhtml
-lib/rdoc/generator/template/chm/classpage.rhtml
+lib/rdoc/generator/template/chm/class.rhtml
 lib/rdoc/generator/template/chm/contents.hhc.rhtml
 lib/rdoc/generator/template/chm/fileindex.rhtml
 lib/rdoc/generator/template/chm/filepage.rhtml

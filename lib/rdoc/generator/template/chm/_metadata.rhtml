@@ -1,0 +1,46 @@
+<!--<div id="metadata"> -->
+  <div id="file-metadata">
+    <div id="file-list-section" class="section">
+      <h3 class="section-header">In Files</h3>
+      <div class="section-body">
+        <ul>
+        <% klass.in_files.each do |tl| %>
+          <li><a href="<%= rel_prefix %>/<%= h tl.path %>"
+            title="<%= h tl.absolute_name %>"><%= h tl.absolute_name %></a></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+
+  <div id="class-metadata">
+
+    <!-- Parent Class -->
+    <% if klass.type == 'class' %>
+    <div id="parent-class-section" class="section">
+      <h3 class="section-header">Parent</h3>
+      <% unless String === klass.superclass or klass.superclass.nil? %>
+      <p class="link"><a href="<%= klass.aref_to klass.superclass.path %>"><%= klass.superclass.full_name %></a></p>
+      <% else %>
+      <p class="link"><%= klass.superclass %></p>
+      <% end %>
+    </div>
+    <% end %>
+
+    <!-- Included Modules -->
+    <% unless klass.includes.empty? %>
+    <div id="includes-section" class="section">
+      <h3 class="section-header">Included Modules</h3>
+      <ul class="link-list">
+      <% klass.each_include do |inc| %>
+      <% unless String === inc.module %>
+        <li><a class="include" href="<%= klass.aref_to inc.module.path %>"><%= inc.module.full_name %></a></li>
+      <% else %>
+        <li><span class="include"><%= inc.name %></span></li>
+      <% end %>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+  </div>
+
+<!-- </div> -->
