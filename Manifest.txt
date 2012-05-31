@@ -15,7 +15,7 @@ lib/rdoc/generator/template/chm/classindex.rhtml
 lib/rdoc/generator/template/chm/class.rhtml
 lib/rdoc/generator/template/chm/contents.hhc.rhtml
 lib/rdoc/generator/template/chm/fileindex.rhtml
-lib/rdoc/generator/template/chm/filepage.rhtml
+lib/rdoc/generator/template/chm/page.rhtml
 lib/rdoc/generator/template/chm/hhp_file.hhp.rhtml
 lib/rdoc/generator/template/chm/images/brick.png
 lib/rdoc/generator/template/chm/images/brick_link.png
