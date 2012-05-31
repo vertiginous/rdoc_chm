@@ -6,6 +6,8 @@ lib/rdoc/discover.rb
 lib/rdoc/generator/chm.rb
 lib/rdoc/generator/template/chm/.document
 lib/rdoc/generator/template/chm/_class_metadata.rhtml
+lib/rdoc/generator/template/chm/_index_modules_and_files.rhtml
+lib/rdoc/generator/template/chm/_hidden_images.rhtml
 lib/rdoc/generator/template/chm/_head.rhtml
 lib/rdoc/generator/template/chm/_footer.rhtml
 lib/rdoc/generator/template/chm/chm_index.hhk.rhtml
