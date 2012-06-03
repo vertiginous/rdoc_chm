@@ -55,6 +55,9 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
   # The project contains the project file, a table of contents and an index
 
   def generate_help_project
+    # Set which files should actually be generated
+    @generated_files = @files.select { |f| f.text? }
+
     debug_msg "Generating the help project files"
     generate_file_index
     generate_class_index
@@ -95,7 +98,7 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
     @values = { :title => @options.title, :opname => @outputdir.basename }
     
     static_files = ['index.html', 'classindex.html', 'fileindex.html']
-    @values[:html_files] = static_files + (@files+@classes).map{|f| f.path }
+    @values[:html_files] = static_files + (@generated_files+@classes).map{|f| f.path }
     
     out_file = @outputdir + @project_name
     debug_msg "  rendering #{out_file}"
