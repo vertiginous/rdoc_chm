@@ -140,39 +140,5 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
       super
     end
   end
-
-  ##
-  # The generate_file_files method in RDoc 3.12 is broken for 'legacy'
-  # template support. So this overrides that method so it works.
-  def generate_file_files
-    filepage_file = @template_dir + 'page.rhtml' 
-
-    return unless filepage_file.exist?
-
-    debug_msg "Generating file documentation in #{@outputdir}"
-
-    out_file = nil
-    current = nil
-
-    @files.each do |file|
-      current = file
-      template_file = nil
-      out_file = @outputdir + file.path
-      debug_msg "  working on %s (%s)" % [file.full_name, out_file]
-      # suppress 1.9.3 warning
-      rel_prefix = rel_prefix = @outputdir.relative_path_from(out_file.dirname)
-
-      @title += " - #{@options.title}"
-      template_file = filepage_file
-
-      render_template template_file, out_file do |io| binding end
-    end
-  rescue => e
-    error =
-      RDoc::Error.new "error generating #{out_file}: #{e.message} (#{e.class})"
-    error.set_backtrace e.backtrace
-
-    raise error
-  end
 end
 
