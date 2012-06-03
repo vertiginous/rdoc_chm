@@ -68,6 +68,9 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
     template_file = @template_dir + 'fileindex.rhtml'
 
     out_file = @outputdir + "fileindex.html"
+    # suppress 1.9.3 warning
+    rel_prefix = rel_prefix = @outputdir.relative_path_from(out_file.dirname)
+
     debug_msg "  rendering #{out_file}"
     render_template template_file, out_file do |io| binding end
   end
@@ -77,6 +80,9 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
 
     out_file = @outputdir + "classindex.html"
     debug_msg "  rendering #{out_file}"
+    # suppress 1.9.3 warning
+    rel_prefix = rel_prefix = @outputdir.relative_path_from(out_file.dirname)
+
     render_template template_file, out_file do |io| binding end
   end
 
@@ -139,7 +145,7 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
   # The generate_file_files method in RDoc 3.12 is broken for 'legacy'
   # template support. So this overrides that method so it works.
   def generate_file_files
-    filepage_file = @template_dir + 'filepage.rhtml' 
+    filepage_file = @template_dir + 'page.rhtml' 
 
     return unless filepage_file.exist?
 
