@@ -10,7 +10,7 @@
 	<param name="ImageType" value="Folder">
 </OBJECT>
 <UL>
-<% (@files+@classes).sort.each do |index| %>
+<% (@generated_files+@classes).sort.each do |index| %>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="<%= index.full_name %>">
 		<param name="Local" value="<%= index.path %>">
@@ -22,6 +22,6 @@
 		<param name="Local" value="<%= method.path %>">
 		</OBJECT>
 <% end # index.method_list.sort %>
-<% end # (@files+@classes).sort %>
+<% end # (@generated_files+@classes).sort %>
 </UL>
 </BODY></HTML>
