@@ -98,7 +98,7 @@ class RDoc::Generator::CHM < RDoc::Generator::Darkfish
     @values = { :title => @options.title, :opname => @outputdir.basename }
     
     static_files = ['index.html', 'classindex.html', 'fileindex.html']
-    @values[:html_files] = static_files + (@generated_files+@classes).map{|f| f.path }
+    @values[:html_files] = static_files + (@generated_files+@classes).map{|f| f.path}.uniq
     
     out_file = @outputdir + @project_name
     debug_msg "  rendering #{out_file}"
