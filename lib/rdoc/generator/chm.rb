@@ -16,7 +16,7 @@ end
 
 class RDoc::Generator::CHM < RDoc::Generator::Darkfish
 
-  VERSION = '3.0.0'
+  VERSION = '3.1.0'
 
   DESCRIPTION = 'Microsoft Compiled HTML Help (chm) generator'
 

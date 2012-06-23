@@ -1,4 +1,4 @@
-=== (In Git)
+=== 3.1.0 / 2012-06-23
 
 * Updated Darkfish template to match RDoc 3.12 ones [Azolo]
 
