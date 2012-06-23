@@ -41,7 +41,7 @@
           <param name="Local" value="fileindex.html">
         </OBJECT>
     <UL>
-        <% @files.sort.each do |klass| %>
+        <% @generated_files.sort.each do |klass| %>
         <LI><OBJECT type="text/sitemap">
               <param name="Name" value="<%= klass.full_name %>">
               <param name="Local" value="<%= klass.path %>">
